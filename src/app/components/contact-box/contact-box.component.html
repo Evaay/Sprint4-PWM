@@ -1,0 +1,21 @@
+<div class="player-container">
+  <img [src]='contact.profilePhoto' class="profilePic" alt="user photo">
+
+  <audio class="player">
+    <source src="assets/images/audio.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="playPauseButton" (click)="playAudio()">
+    <img class="playPauseIcon" src="assets/images/audioPlay.png" alt="Play">
+  </button>
+
+  <input type="range" class="progress" value="0" max="100">
+
+  <span class="currentTime time bar-time-messageAudio">0:00</span>
+  <span class="time bar-time-messageAudio">/</span>
+  <span class="durationTime time bar-time-messageAudio">0:00</span>
+
+  <button class="favoriteButton" (click)="toggleFavorite()">
+    <ion-icon [icon]="isFavorite ? 'heart' : 'heart-outline'" class="favoriteIcon"></ion-icon>
+  </button>
+</div>
