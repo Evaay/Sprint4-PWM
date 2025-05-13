@@ -65,6 +65,7 @@ export class CreateAccountComponent {
 
   showPasswordMatchError() {
     return this.form.get('password_confirmation')?.touched &&
+      this.form.get('password_confirmation')?.dirty &&
       this.form.get('password')?.touched &&
       (this.form.get("password")?.value != "") &&
       (this.form.get('password_confirmation')?.value != "") &&

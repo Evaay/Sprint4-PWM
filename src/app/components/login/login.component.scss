@@ -62,7 +62,7 @@ input {
   border: #A8A8A8 solid 2px;
   font-size: 0.8em;
 
-  &.ng-invalid.ng-touched {
+  &.ng-dirty.ng-invalid.ng-touched {
     border-color: red;
   }
 }

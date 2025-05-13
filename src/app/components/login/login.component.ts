@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router, RouterLink, RouterModule} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
@@ -16,23 +16,24 @@ import {toast} from 'ngx-sonner';
     RouterLink
   ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit { // Implementa OnInit
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  /*Herramienta para crear formularios reactivos +rápidos y +legibles
-  * Ayuda a crear: FormGroup, FormControl, FormArray
-  * */
-  formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder); //no va a permitir que sea nulo
+  formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
   form: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]], //nunca será null, solo string
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required,
       Validators.minLength(8),
       Validators.pattern(/^(?=.*[a-zñ])(?=.*[A-ZÑ])(?=.*\d)(?=.*[.$@$!%*?&])[A-Za-zÑñ\d.$@$!%*?&]+$/)]],
   });
 
   user!: User;
+
+  ngOnInit(): void {
+    this.form.reset(); // Asegúrate de tener esta línea
+  }
 
   onSubmit() {
     if (this.form.invalid) {
