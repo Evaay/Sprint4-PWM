@@ -1,0 +1,16 @@
+ion-content.background{
+  --background: url(src/assets/images/background.webp);
+}
+
+.ion-justify-content-center {
+  display: flex;
+  width: 100%;
+}
+
+.ion-row {
+  width: 60%;
+}
+
+ion-col {
+  margin-top: 5rem;
+}

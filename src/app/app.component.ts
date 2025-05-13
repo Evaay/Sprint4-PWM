@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {IonApp, IonItem, IonList, IonMenuToggle, IonRouterLink, IonRouterOutlet} from '@ionic/angular/standalone';
 import {
   IonContent,
@@ -8,6 +8,9 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import {RouterLink} from "@angular/router";
+import {logOut} from "ionicons/icons";
+import {Router} from '@angular/router';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -15,5 +18,12 @@ import {RouterLink} from "@angular/router";
   imports: [IonApp, IonRouterOutlet, IonContent, IonHeader, IonMenu, IonTitle, IonToolbar, IonList, IonItem, IonRouterLink, RouterLink, IonMenuToggle],
 })
 export class AppComponent {
-  constructor() {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
+  logout() {
+    this.authService.logOut().then(() => {
+      this.router.navigateByUrl('/log-in');
+    });
+  }
 }

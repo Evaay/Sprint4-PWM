@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#main-container {
+  display: flex;
+  align-items: center;
+  background: #b1bfce;
+  padding: 0.4em 0.6em;
+  width: 100%;
+  height: 5em;
+}
+
+figure {
+  width: 4.5em;
+  height: 4.5em;
+  display: flex;
+  cursor: pointer;
+}
+
+ion-button {
+  --background: #1d407d;
+  --color: whitesmoke;
+  margin-right: 1em;
+}
+
+.ion-justify-content-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}

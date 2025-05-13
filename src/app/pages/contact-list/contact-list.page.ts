@@ -10,11 +10,9 @@ import {IonButtons, IonContent, IonHeader, IonMenuButton, IonTitle, IonToolbar} 
   standalone: true,
     imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton]
 })
-export class ContactListPage implements OnInit {
+export class ContactListPage {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

@@ -57,3 +57,21 @@ app-contact-box {
   display: block;
   width: 100%;
 }
+
+#button-favourite {
+  color: white;
+  width: 6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.5em;
+}
+
+#icon-favourite {
+  width: 3em;
+}
+
+#chat-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}

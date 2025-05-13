@@ -7,16 +7,11 @@ import { heart, heartOutline, heartSharp } from 'ionicons/icons'
   selector: 'app-contact-box',
   templateUrl: './contact-box.component.html',
   styleUrls: ['./contact-box.component.scss'],
-  imports: [
-    IonIcon
-  ]
+  imports: []
 })
 export class ContactBoxComponent {
-  heartOutline = heartOutline;
-  heartFilled = heart;
   @Input() contact!: Contact;
   private audio= new Audio();
-  isFavorite: boolean = false;
 
   constructor() {
     this.audio.src = "assets/images/audio.mp3";
@@ -26,9 +21,4 @@ export class ContactBoxComponent {
   playAudio(){
     this.audio.play();
   }
-
-  toggleFavorite() {
-    this.isFavorite = !this.isFavorite;
-  }
-
 }

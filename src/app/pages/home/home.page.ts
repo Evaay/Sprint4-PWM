@@ -8,18 +8,18 @@ import {
   IonMenuButton,
   IonList, IonButton, NavController
 } from '@ionic/angular/standalone';
+import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {Contact} from "../../models/contact";
 import {Observable} from "rxjs";
 import {ContactBoxComponent} from "../../components/contact-box/contact-box.component";
-import {AsyncPipe, NgForOf} from "@angular/common";
-import {Router} from "@angular/router";
+import {AsyncPipe, CommonModule, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton, IonList, ContactBoxComponent, NgForOf, AsyncPipe],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton, IonList, ContactBoxComponent, NgForOf, AsyncPipe, CommonModule ],
 })
 export class HomePage implements OnInit {
   contacts$!: Observable<Contact[]>;
@@ -43,5 +43,16 @@ export class HomePage implements OnInit {
 
   showContact(contact: Contact) {
     this.navCtrl.navigateForward(['/contact-detail', contact.id]);
+  }
+
+  isFavorite: boolean = false;
+  toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+    const imageFavourite = document.getElementById('icon-favourite') as HTMLImageElement;
+    if (this.isFavorite) {
+      imageFavourite.src = "assets/images/favorito-with-color.png";
+    } else {
+      imageFavourite.src = "assets/images/favorito-without-color.png";
+    }
   }
 }

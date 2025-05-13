@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#createAccount-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.25em;
+  border: whitesmoke solid 2px;
+  border-radius: 10px;
+  background: whitesmoke;
+  box-shadow: 0 5px 10px rgba(0.5, 0.4, 0, 0.3);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#welcome-text {
+  color: #1d407d;
+  font-size: 1.8em;
+}
+
+#welcome-text2 {
+  display: none
+}
+
+.createAccount-maintext {
+  text-align: center;
+  width: 100%;
+}
+
+#createAccount-Text {
+  color: #323234;
+  padding: 1em 0 0.05em 0.2em;
+  font-size: 1.2em;
+}
+
+#createAccount-Form {
+  width: 100%;
+  padding-left: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+section {
+  width: 100%;
+  margin-block: 0.4em;
+}
+
+input {
+  width: 94%;
+  padding: 0.5em 0 0.5em 1em;
+  border-radius: 0.5em;
+  border: #A8A8A8 solid 2px;
+  font-size: 0.8em;
+
+  &.ng-invalid.ng-touched {
+    border-color: red;
+  }
+}
+
+#createAccount-Field {
+  height: 3em;
+  width: 100%;
+  margin-top: 0.8em;
+  padding-right: 0.5em;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+#birthdate {
+  font-size: 0.8em;
+}
+
+#createAccountButton {
+  width: 96%;
+  height: 2.5em;
+  border-radius: 5em;
+  border: #1d407d solid 2px;
+  background: #1d407d;
+  cursor: pointer;
+  color: whitesmoke;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9em;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  display: block;
+  margin-top: 5px;
+}
+
+#createAccountButton:hover {
+  background: lightskyblue;
+  color: #1d407d;
+  border-color: lightskyblue;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1d407d;
+  box-shadow: 0 0 5px #1d407d;
+}
+
+@media screen and (max-width: 500px) {
+  #createAccount-Text {
+    font-size: 2.3em;
+  }
+  #createAccount-Container {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    margin-top: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 3.5em auto;
+    border-radius: 0;
+  }
+  #createAccount-Form {
+    font-size: 1.2em;
+  }
+
+  #birthdate, #confirm-password, #password {
+    padding-left: 0.4em;
+    padding-right: 0.9em;
+  }
+
+  input {
+    padding: 0.5em;
+  }
+
+  #createAccountButton {
+    width: 100%;
+    height: 2.2em;
+  }
+
+  #welcome-text, createAccount-Text {
+    display: none;
+  }
+  #welcome-text2 {
+    display: block;
+    color: #323234;
+    padding: 0.5em 0 0.05em 0.5em;
+    font-size: 2em;
+  }
+  #createAccount-Text {
+    display: none;
+  }
+
+  #createAccount-Form {
+    width: 100%;
+    padding-left: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+  }
+
+  #createAccountButton:hover {
+    background: lightskyblue;
+    color: #1d407d;
+    border-color: lightskyblue;
+  }
+}
+
+@media (max-width: 932px) and (max-height: 430px) {
+  #createAccount-Text {
+    font-size: 2.3em;
+  }
+
+  #createAccount-Container {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    margin-top: 0;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 3.5em auto;
+    border-radius: 0;
+  }
+
+  #createAccount-Form {
+    font-size: 1.2em;
+  }
+
+  #birthdate, #confirm-password, #password {
+    padding-left: 0.4em;
+    padding-right: 0.9em;
+  }
+
+  input {
+    padding: 0.5em;
+  }
+
+  #createAccountButton {
+    width: 100%;
+    height: 2.2em;
+  }
+
+  #welcome-text, createAccount-Text {
+    display: none;
+  }
+
+  #welcome-text2 {
+    display: block;
+    color: #323234;
+    padding: 0.5em 0 0.05em 0.5em;
+    font-size: 2em;
+  }
+
+  #createAccount-Text {
+    display: none;
+  }
+
+  #createAccount-Form {
+    width: 100%;
+    padding-left: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+  }
+
+  #createAccountButton:hover {
+    background: lightskyblue;
+    color: #1d407d;
+    border-color: lightskyblue;
+  }
+}
+
+body, html {
+  background-color: #b1bfce;
+  height: 100%;
+  width: 100%;
+}
+.custom-background {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+#createAccount {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../../assets/images/background.webp');
+}
+
+@media screen and (max-width: 530px) {
+  .custom-background {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+input {
+  background: white;
+  color: black;
+}
+
+#birthdate {
+  color: #8c8c8c;
+}
+
+label {
+  color: black;
+}

@@ -1,0 +1,27 @@
+<div id="carousel">
+  <div id="carrusel-photo-container">
+    <button class="prev" (click)="prevSlide()">&#10094;</button>
+    <div class="slides">
+      @for (image of images; let i = $index; track $index) {
+        <div
+          class="slide"
+          [class.active]="i === currentSlide"
+          [style.display]="i === currentSlide ? 'block' : 'none'"
+        >
+          <img [src]="image.src" [alt]="image.alt" />
+        </div>
+      }
+    </div>
+    <button class="next" (click)="nextSlide()">&#10095;</button>
+  </div>
+
+  <div class="dots">
+    @for (_ of images; let i = $index; track $index) {
+      <span
+        class="dot"
+        [class.active]="i === currentSlide"
+        (click)="showSlide(i)"
+      ></span>
+    }
+  </div>
+</div>

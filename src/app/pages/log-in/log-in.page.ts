@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {IonCol, IonContent, IonGrid, IonHeader, IonRow, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import {LoginComponent} from "../../components/login/login.component";
+import {HeaderComponent} from "../../components/header/header.component";
+import {CreateAccountComponent} from "../../components/create-account/create-account.component";
+
+@Component({
+  selector: 'app-log-in',
+  templateUrl: './log-in.page.html',
+  styleUrls: ['./log-in.page.scss'],
+  standalone: true,
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, LoginComponent, HeaderComponent, CreateAccountComponent, IonCol, IonGrid, IonRow]
+})
+export class LogInPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

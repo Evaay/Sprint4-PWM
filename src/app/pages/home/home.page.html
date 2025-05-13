@@ -10,9 +10,14 @@
 <ion-content class="ion-padding">
   <ion-list>
     <ng-container *ngFor="let contact of contacts$ | async">
-      <button (click)="showContact(contact)">
-        <app-contact-box [contact]="contact"></app-contact-box>
-      </button>
+      <div id="chat-container">
+        <button (click)="showContact(contact)">
+          <app-contact-box [contact]="contact"></app-contact-box>
+        </button>
+        <button id="button-favourite" (click)="toggleFavorite()">
+          <img src="assets/images/favorito-without-color.png" id="icon-favourite">
+        </button>
+      </div>
     </ng-container>
 
   </ion-list>
