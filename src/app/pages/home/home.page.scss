@@ -37,11 +37,10 @@ button {
   border: none;
   padding: 0.75rem 1rem;
   margin-bottom: 0.75rem;
-  border-radius: 12px;
   text-align: left;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 button:hover {
@@ -64,7 +63,7 @@ app-contact-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 0.5em;
+  border-radius: 0 12px 12px 0;
 }
 
 #icon-favourite {

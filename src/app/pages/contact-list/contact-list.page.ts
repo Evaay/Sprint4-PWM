@@ -13,7 +13,7 @@ import {
   IonAvatar,
   IonLabel,
   IonButton,
-  IonIcon
+  IonIcon, NavController
 } from '@ionic/angular/standalone';
 import { UserService } from '../../services/user.service';
 import { DatabaseService } from '../../services/database.service';
@@ -49,7 +49,8 @@ export class ContactListPage implements OnInit {
 
   constructor(
     private userService: UserService,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private navCtrl: NavController
   ) {
     addIcons({ star, starOutline });
   }
@@ -79,7 +80,9 @@ export class ContactListPage implements OnInit {
       console.error('Error updating favourites:', error);
     }
   }
-
+  showContact(contact: Contact) {
+    this.navCtrl.navigateForward(['/contact-detail', contact.id]);
+  }
   isFavourite(contactId: string): boolean {
     return this.favourites.some(f => f.id === contactId);
   }
