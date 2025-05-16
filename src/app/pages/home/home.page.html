@@ -14,11 +14,10 @@
         <button (click)="showContact(contact)">
           <app-contact-box [contact]="contact"></app-contact-box>
         </button>
-        <button id="button-favourite" (click)="toggleFavorite()">
-          <img src="assets/images/favorito-without-color.png" id="icon-favourite">
-        </button>
+        <ion-button id="button-favourite" (click)="toggleFavorite(contact)">
+          <img [src]="isFavourite(contact) ? 'assets/images/favorito-with-color.png' : 'assets/images/favorito-without-color.png'">
+        </ion-button>
       </div>
     </ng-container>
-
   </ion-list>
 </ion-content>

@@ -46,7 +46,7 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth, user.email, user.password!);
   }
 
-  getCurrentUser(){
+  getCurrentUserId(){
     return this.auth.currentUser?.uid;
   }
 
