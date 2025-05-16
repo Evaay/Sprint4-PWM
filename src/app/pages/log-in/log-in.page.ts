@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {IonCol, IonContent, IonGrid, IonHeader, IonRow, IonTitle, IonToolbar} from '@ionic/angular/standalone';
@@ -11,13 +11,11 @@ import {CreateAccountComponent} from "../../components/create-account/create-acc
   templateUrl: './log-in.page.html',
   styleUrls: ['./log-in.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, LoginComponent, HeaderComponent, CreateAccountComponent, IonCol, IonGrid, IonRow]
+  imports: [IonContent, IonHeader, CommonModule, FormsModule, LoginComponent, HeaderComponent, IonCol, IonGrid, IonRow]
 })
-export class LogInPage implements OnInit {
+export class LogInPage {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

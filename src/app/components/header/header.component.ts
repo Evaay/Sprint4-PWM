@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {IonButton, IonCol, IonGrid, IonHeader, IonRow} from "@ionic/angular/standalone";
 import {Router, RouterModule} from "@angular/router";
 
