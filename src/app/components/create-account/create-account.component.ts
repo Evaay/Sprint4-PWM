@@ -61,6 +61,7 @@ export class CreateAccountComponent {
       this.authService.signUp(this.user);
       this.form.reset();
       const alert = await this.alertController.create({
+        mode: 'ios',
         header: 'Éxito',
         message: 'Usuario creado correctamente',
         buttons: ['OK'],
@@ -69,6 +70,7 @@ export class CreateAccountComponent {
       this.router.navigate(['login']);
     } catch (error) {
       const alert = await this.alertController.create({
+        mode: 'ios',
         header: 'Error',
         message: 'No se ha podido crear el usuario',
         buttons: ['OK'],

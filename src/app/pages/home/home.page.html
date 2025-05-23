@@ -12,8 +12,10 @@
     <ng-container *ngFor="let contact of contacts$ | async">
       <div id="chat-container">
         <button (click)="showContact(contact)" class="contact-container">
-          <app-contact-box [contact]="contact"></app-contact-box>
-          <img [src]="isFavourite(contact) ? 'assets/images/favorito-with-color.png' : 'assets/images/favorito-without-color.png'" class="favoriteTag">
+          <app-contact-box [contact]="contact" ></app-contact-box>
+          <div id="button-container">
+            <img id="boton-favorito" [src]="isFavourite(contact) ? 'assets/images/favorito-with-color.png' : 'assets/images/favorito-without-color.png'" class="favoriteTag">
+          </div>
         </button>
       </div>
     </ng-container>
