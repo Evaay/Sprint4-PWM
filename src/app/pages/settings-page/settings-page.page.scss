@@ -1,0 +1,35 @@
+ion-content.background{
+  --background: url(src/assets/images/background.webp);
+}
+
+.ion-justify-content-center {
+  display: flex;
+  width: 100%;
+}
+
+.ion-row {
+  width: 60%;
+  height: 100vh;
+}
+
+ion-col {
+  margin-top: 5rem;
+  max-height: 100vh;
+}
+
+@media screen and (max-width: 500px) {
+  .ion-row {
+    width: 100%;
+  }
+  ion-col {
+    margin-top: 0;
+  }
+  ion-content.background{
+    --background: whitesmoke;
+  }
+}
+
+#settings-component {
+  height: 100%;
+  width: 100%;
+}

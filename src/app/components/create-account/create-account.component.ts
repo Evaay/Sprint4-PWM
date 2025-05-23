@@ -9,7 +9,7 @@ import {
   dateValidValidatorControl, passwordMatchValidator,
   userNameExistsValidator
 } from "../../validators/createAccount.validator";
-import {toast} from "ngx-sonner";
+import { AlertController } from '@ionic/angular';
 
 @Component({
     selector: 'app-create-account',
@@ -24,6 +24,8 @@ export class CreateAccountComponent {
   private authService = inject(AuthService);
   private userService = inject(UserService);
   private router = inject(Router);
+  constructor(private alertController: AlertController) {}
+
 
   //Estructura del usuario de firestore
   user: User = {
@@ -48,19 +50,31 @@ export class CreateAccountComponent {
     birthday: ['', [Validators.required, dateFutureValidatorControl, dateValidValidatorControl]],
   }, {validators: [passwordMatchValidator]});
 
-  onSubmit() {
+  async onSubmit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
     this.user = {...this.user, ...this.form.value};
-    this.authService.signUp(this.user).then(() => {
+
+    try {
+      this.authService.signUp(this.user);
       this.form.reset();
-      toast.success('Usuario creado correctamente');
+      const alert = await this.alertController.create({
+        header: 'Éxito',
+        message: 'Usuario creado correctamente',
+        buttons: ['OK'],
+      });
+      await alert.present();
       this.router.navigate(['login']);
-    }).catch(error => {
-      toast.error("No se ha podido crear el usuario");
-    });
+    } catch (error) {
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'No se ha podido crear el usuario',
+        buttons: ['OK'],
+      });
+      await alert.present();
+    }
   }
 
   showPasswordMatchError() {

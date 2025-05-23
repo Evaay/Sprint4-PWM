@@ -73,7 +73,7 @@ export class DatabaseService {
       await this.db.run(
         `INSERT OR REPLACE INTO favorites (id, name, birthday, email, description, photo) VALUES (?, ?, ?, ?, ?, ?)`,
         [contact.id, contact.name, contact.birthday, contact.email,contact.description, contact.profilePhoto]
-      );
+    );
     }
   }
 

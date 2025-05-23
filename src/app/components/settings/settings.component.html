@@ -1,0 +1,77 @@
+<div class="setting-body">
+  <div class="setting-container" [class.expanded]="isFormTouchedAndInvalid">
+    <h2 class="password-Text">Modificar Contraseña</h2>
+    <form [formGroup]="form" (ngSubmit)="changePassword()" id="passwordForm">
+      <section>
+        <label for="currentPassword">Contraseña Actual:</label>
+        <input type="password" id="currentPassword" placeholder="Ingresa tu contraseña actual"
+               formControlName="currentPassword">
+        @if (form.get('currentPassword')?.touched && form.get('currentPassword')?.hasError('required')) {
+          <span class="error-message">Es obligatorio introducir una contraseña</span>
+        }
+        @if (form.get('currentPassword')?.touched && form.get('currentPassword')?.hasError('minLength')) {
+          <span class="error-message">La contraseña debe de contener al menos 8 dígitos</span>
+        }
+        @if (form.get('currentPassword')?.touched && form.get('currentPassword')?.hasError('pattern')) {
+          <span class="error-message">La contraseña no sigue el patrón correcto</span>
+          <span class="error-message">1 Mayúscula</span>
+          <span class="error-message">1 Minúsucla</span>
+          <span class="error-message">1 Carácter especial</span>
+        }
+        @if (form.get('currentPassword')?.touched && form.get('currentPassword')?.errors?.['incorrectPassword']) {
+          <span class="error-message">La contraseña es incorrecta</span>
+        }
+      </section>
+
+      <section>
+        <label for="newPassword">Nueva Contraseña:</label>
+        <input type="password" id="newPassword" placeholder="Ingresa la nueva contraseña"
+               formControlName="newPassword">
+        @if (form.get('newPassword')?.touched && form.get('newPassword')?.hasError('required')) {
+          <span class="error-message">Es obligatorio introducir una contraseña</span>
+        }
+        @if (form.get('newPassword')?.touched && form.get('newPassword')?.hasError('minLength')) {
+          <span class="error-message">La contraseña debe de contener al menos 8 dígitos</span>
+        }
+        @if (form.get('newPassword')?.touched && form.get('newPassword')?.hasError('maxLength')) {
+          <span class="error-message">La contraseña debe de contener menos de 15 dígitos</span>
+        }
+        @if (form.get('newPassword')?.touched && form.get('newPassword')?.hasError('pattern')) {
+          <span class="error-message">La contraseña no sigue el patrón correcto</span>
+          <span class="error-message">1 Mayúscula</span>
+          <span class="error-message">1 Minúsucla</span>
+          <span class="error-message">1 Carácter especial</span>
+        }
+      </section>
+
+      <section>
+        <label for="confirmPassword">Confirmar nueva contraseña:</label>
+        <input type="password" id="confirmPassword" placeholder="Confirma la nueva contraseña"
+               formControlName="confirmPassword">
+        @if (form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('required')) {
+          <span class="error-message">Es obligatorio introducir una contraseña</span>
+        }
+        @if (form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('minLength')) {
+          <span class="error-message">La contraseña debe de contener al menos 8 dígitos</span>
+        }
+        @if (form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('maxLength')) {
+          <span class="error-message">La contraseña debe de contener menos de 15 dígitos</span>
+        }
+        @if (form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('pattern')) {
+          <span class="error-message">La contraseña no sigue el patrón correcto</span>
+          <span class="error-message">1 Mayúscula</span>
+          <span class="error-message">1 Minúsucla</span>
+          <span class="error-message">1 Carácter especial</span>
+        }
+        @if (showPasswordMatchError()) {
+          <span class="error-message">Las contraseñas no coinciden</span>
+        }
+      </section>
+
+      <section class="inputOptions-Field" id="password-Field">
+        <button type="submit" id="setting-button">Cambiar Contraseña</button>
+      </section>
+    </form>
+
+  </div>
+</div>

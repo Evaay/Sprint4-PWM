@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {IonCol, IonContent, IonGrid, IonHeader, IonRow, IonTitle, IonToolbar} from '@ionic/angular/standalone';
+import {IonCol, IonContent, IonGrid, IonHeader, IonRow,} from '@ionic/angular/standalone';
 import {LoginComponent} from "../../components/login/login.component";
 import {HeaderComponent} from "../../components/header/header.component";
-import {CreateAccountComponent} from "../../components/create-account/create-account.component";
 
 @Component({
   selector: 'app-log-in',
