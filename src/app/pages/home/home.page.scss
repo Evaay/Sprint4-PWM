@@ -39,8 +39,7 @@ button {
   margin-bottom: 0.75rem;
   text-align: left;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
+  border-radius: 12px;
 }
 
 button:hover {
@@ -73,4 +72,11 @@ app-contact-box {
 #chat-container {
   display: grid;
   grid-template-columns: 1fr auto;
+}
+.favoriteTag{
+  width: 4rem;
+  margin-left: 1rem;
+}
+.contact-container {
+  display: flex;
 }

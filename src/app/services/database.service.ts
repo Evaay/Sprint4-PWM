@@ -3,6 +3,7 @@ import {Capacitor} from '@capacitor/core';
 import {CapacitorSQLite, SQLiteConnection, SQLiteDBConnection} from '@capacitor-community/sqlite';
 import {Contact} from "../models/contact";
 import {Platform} from '@ionic/angular';
+import {AuthService} from "./auth.service";
 
 
 @Injectable({
@@ -11,19 +12,33 @@ import {Platform} from '@ionic/angular';
 export class DatabaseService {
 
 
+
   private sqlite: SQLiteConnection;
   private db: SQLiteDBConnection | null = null;
   private isWeb: boolean = false;
-  private readonly STORAGE_KEY = 'favorites';
+  private STORAGE_KEY!: string;
   private readonly STORAGE_DB = 'favoritesDB';
+  private userID !:string;
 
 
-  constructor(private platform: Platform) {
+  constructor(
+    private platform: Platform,
+    private auth: AuthService,
+    ) {
     this.sqlite = new SQLiteConnection(CapacitorSQLite);
     this.init();
   }
 
+  private loadUserId() {
+    const id = this.auth.getCurrentUserId();
+    if (id != null) {
+      this.userID = id;
+      this.STORAGE_KEY = id!;
+    }
+  }
+
   private async init() {
+    this.loadUserId()
     await this.platform.ready();
     this.isWeb = Capacitor.getPlatform() === 'web';
 
@@ -35,7 +50,7 @@ export class DatabaseService {
         await db.open();
         this.db = db;
         await db.execute(`
-          CREATE TABLE IF NOT EXISTS favorites (
+          CREATE TABLE IF NOT EXISTS ${this.userID} (
             id TEXT PRIMARY KEY,
             name TEXT,
             birthday TEXT,
@@ -71,7 +86,7 @@ export class DatabaseService {
       }
     } else if (this.db) {
       await this.db.run(
-        `INSERT OR REPLACE INTO favorites (id, name, birthday, email, description, photo) VALUES (?, ?, ?, ?, ?, ?)`,
+        `INSERT OR REPLACE INTO ${this.userID} (id, name, birthday, email, description, photo) VALUES (?, ?, ?, ?, ?, ?)`,
         [contact.id, contact.name, contact.birthday, contact.email,contact.description, contact.profilePhoto]
     );
     }
@@ -84,7 +99,7 @@ export class DatabaseService {
       const updatedFavorites = favorites.filter((fav: any) => fav.id !== id);
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(updatedFavorites));
     } else if (this.db) {
-      await this.db.run(`DELETE FROM favorites WHERE id = ?`, [id]);
+      await this.db.run(`DELETE FROM ${this.userID} WHERE id = ?`, [id]);
     }
   }
 
@@ -93,7 +108,7 @@ export class DatabaseService {
       const stored = localStorage.getItem(this.STORAGE_KEY);
       return stored ? JSON.parse(stored) : [];
     } else if (this.db) {
-      const res = await this.db.query(`SELECT * FROM favorites`);
+      const res = await this.db.query(`SELECT * FROM ${this.userID}`);
       return res.values ?? [];
     }
     return [];
@@ -105,8 +120,7 @@ export class DatabaseService {
       return favorites.some((fav: any) => fav.id === id);
     } else if (this.db) {
       const res =
-        await this.db.query(`SELECT id FROM favorites WHERE id = ?`, [id]);
-      //return res.values?.length > 0 ?? false;
+        await this.db.query(`SELECT id FROM ${this.userID} WHERE id = ?`, [id]);
       return !!(res.values && res.values.length > 0);
     }
 
@@ -117,7 +131,7 @@ export class DatabaseService {
     if (this.isWeb) {
       localStorage.removeItem(this.STORAGE_KEY);
     } else if (this.db) {
-      await this.db.execute(`DELETE FROM favorites`);
+      await this.db.execute(`DELETE FROM ${this.userID}`);
     }
   }
 

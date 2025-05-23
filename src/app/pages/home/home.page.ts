@@ -19,7 +19,7 @@ import {DatabaseService} from "../../services/database.service";
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton, IonList, ContactBoxComponent, NgForOf, AsyncPipe, CommonModule, IonButton],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton, IonList, ContactBoxComponent, NgForOf, AsyncPipe, CommonModule],
 })
 export class HomePage implements OnInit {
 

@@ -11,11 +11,9 @@
   <ion-list>
     <ng-container *ngFor="let contact of contacts$ | async">
       <div id="chat-container">
-        <button (click)="showContact(contact)">
+        <button (click)="showContact(contact)" class="contact-container">
           <app-contact-box [contact]="contact"></app-contact-box>
-        </button>
-        <button id="button-favourite" (click)="toggleFavorite(contact)">
-          <img [src]="isFavourite(contact) ? 'assets/images/favorito-with-color.png' : 'assets/images/favorito-without-color.png'">
+          <img [src]="isFavourite(contact) ? 'assets/images/favorito-with-color.png' : 'assets/images/favorito-without-color.png'" class="favoriteTag">
         </button>
       </div>
     </ng-container>
