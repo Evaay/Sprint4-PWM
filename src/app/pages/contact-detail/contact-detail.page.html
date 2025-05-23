@@ -20,7 +20,7 @@
     <ion-card-content>
       <p>{{ description }}</p>
       <ion-toggle
-        [checked]="isFavourite(user.id)"
+        [checked]="isFavourite(userId)"
         (ionChange)="onFavoriteChange($event)"
       >Agrega a favoritos
       </ion-toggle>

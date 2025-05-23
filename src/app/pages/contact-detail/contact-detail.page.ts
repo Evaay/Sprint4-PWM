@@ -24,6 +24,7 @@ import {DatabaseService} from "../../services/database.service";
 })
 export class ContactDetailPage implements OnInit {
   favourites: Contact[] = [];
+  userId!: string;
   user!: Contact;
   name: string = ' ';
   email: string = ' ';
@@ -40,6 +41,7 @@ export class ContactDetailPage implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id){
+      this.userId = id;
       this.userService.getUserByID(id).subscribe(user => {
         this.user = user;
         this.profilePhoto = user.profilePhoto;
