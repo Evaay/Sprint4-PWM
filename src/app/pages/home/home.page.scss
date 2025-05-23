@@ -80,3 +80,16 @@ app-contact-box {
 .contact-container {
   display: flex;
 }
+
+@media screen and (max-width: 500px) {
+  #boton-favorito {
+    width: 3em;
+    height: 3em;
+  }
+
+  #button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

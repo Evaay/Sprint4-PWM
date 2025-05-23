@@ -50,6 +50,7 @@ export class SettingsComponent  {
       this.form.reset();
 
       const alert = await this.alertController.create({
+        mode: 'ios',
         header: 'Éxito',
         message: 'Contraseña cambiada correctamente.',
         buttons: ['OK'],
@@ -57,6 +58,7 @@ export class SettingsComponent  {
       await alert.present();
     } catch (error) {
       const alert = await this.alertController.create({
+        mode: 'ios',
         header: 'Error',
         message: 'No se pudo cambiar la contraseña. Inténtalo más tarde.',
         buttons: ['OK'],
