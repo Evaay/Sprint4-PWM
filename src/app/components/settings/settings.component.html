@@ -75,6 +75,7 @@
           [header]="alertHeader"
           [message]="alertMessage"
           [buttons]= "alertButton"
+          (didDismiss)="onAlertDidDismiss()"
         ></ion-alert>
       </section>
     </form>

@@ -33,11 +33,6 @@ export const routes: Routes = [
     canActivate: [publicGuard]
   },
   {
-    path: 'main-page',
-    loadComponent: () => import('./pages/main-page/main-page.page').then(m => m.MainPagePage),
-    canActivate: [publicGuard]
-  },
-  {
     path: 'settings',
     loadComponent: () => import('./pages/settings-page/settings-page.page').then( m => m.SettingsPagePage)
   }

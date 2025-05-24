@@ -22,8 +22,10 @@ export class LoginComponent implements OnInit { // Implementa OnInit
   alertHeader: string = "";
   alertMessage: string = "";
   alertButton = ['OK'];
+  isAlertOpen = false;
+  private shouldNavigate = false;
+
   constructor(
-    private alertController: AlertController,
     private navCtrl: NavController
   ) {}
 
@@ -55,7 +57,9 @@ export class LoginComponent implements OnInit { // Implementa OnInit
       this.form.reset();
       this.alertHeader = "Éxito"
       this.alertMessage = "Hola de nuevo";
-      this.navCtrl.navigateForward('home');
+      this.isAlertOpen = true;
+      this.shouldNavigate = true;
+
     } catch(error) {
       this.alertHeader = 'Error';
       this.alertMessage = 'El usuario no existe o contraseña incorrecta';
@@ -65,5 +69,12 @@ export class LoginComponent implements OnInit { // Implementa OnInit
 
   get isFormTouchedAndInvalid() {
     return this.form.invalid && this.form.touched;
+  }
+
+  onAlertDidDismiss() {
+    this.isAlertOpen = false; // cierro la alerta
+    if (this.shouldNavigate) {
+      this.navCtrl.navigateForward('home');
+    }
   }
 }

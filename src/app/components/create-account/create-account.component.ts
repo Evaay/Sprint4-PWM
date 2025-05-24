@@ -10,7 +10,7 @@ import {
   userNameExistsValidator
 } from "../../validators/createAccount.validator";
 import { AlertController } from '@ionic/angular';
-import {IonAlert} from "@ionic/angular/standalone";
+import {IonAlert, NavController} from "@ionic/angular/standalone";
 
 @Component({
     selector: 'app-create-account',
@@ -26,10 +26,11 @@ export class CreateAccountComponent {
   alertHeader: string = "";
   alertMessage: string = "";
   alertButton = ['OK'];
+  isAlertOpen = false;
+  private shouldNavigate = false;
   private authService = inject(AuthService);
   private userService = inject(UserService);
-  private router = inject(Router);
-  constructor(private alertController: AlertController) {}
+  constructor(private navCtrl: NavController) {}
 
 
   //Estructura del usuario de firestore
@@ -63,11 +64,13 @@ export class CreateAccountComponent {
     this.user = {...this.user, ...this.form.value};
 
     try {
-      this.authService.signUp(this.user);
+      await this.authService.signUp(this.user);
       this.form.reset();
       this.alertHeader = "Éxito"
       this.alertMessage = 'Usuario creado correctamente';
-      this.router.navigate(['login']);
+      this.shouldNavigate = true;
+      this.isAlertOpen = true;
+
     } catch (error) {
       this.alertHeader = 'Error'
       this.alertMessage = 'No se ha podido crear el usuario';
@@ -89,6 +92,12 @@ export class CreateAccountComponent {
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
     const day = today.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+  onAlertDidDismiss() {
+    this.isAlertOpen = false; // cierro la alerta
+    if (this.shouldNavigate) {
+      this.navCtrl.navigateForward('log-in');
+    }
   }
 
 }

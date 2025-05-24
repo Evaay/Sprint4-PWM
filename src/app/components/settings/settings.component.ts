@@ -7,7 +7,7 @@ import {
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import {IonAlert} from "@ionic/angular/standalone";
+import {IonAlert, NavController} from "@ionic/angular/standalone";
 
 
 @Component({
@@ -21,13 +21,14 @@ import {IonAlert} from "@ionic/angular/standalone";
 })
 export class SettingsComponent  {
   private authService = inject(AuthService);
-  private router = inject(Router);
   alertHeader: string = "";
   alertMessage: string = "";
   alertButton = ['OK'];
+  isAlertOpen = false;
+  private shouldNavigate = false;
   formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
-  constructor(private alertController: AlertController) {}
+  constructor(private navCtrl: NavController) {}
 
   form: FormGroup = this.formBuilder.group({
     currentPassword: ['', [Validators.required,
@@ -55,6 +56,8 @@ export class SettingsComponent  {
       this.form.reset();
       this.alertHeader = 'Éxito';
       this.alertMessage = 'Contraseña cambiada correctamente.';
+      this.isAlertOpen = true;
+      this.shouldNavigate = true;
 
     } catch (error) {
       this.alertHeader = 'Error';
@@ -74,4 +77,10 @@ export class SettingsComponent  {
     return this.form.invalid && this.form.touched;
   }
 
+  onAlertDidDismiss() {
+    this.isAlertOpen = false; // cierro la alerta
+    if (this.shouldNavigate) {
+      this.navCtrl.navigateForward('log-in');
+    }
+  }
 }
