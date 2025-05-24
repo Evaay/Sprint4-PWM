@@ -7,6 +7,7 @@ import {
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import {IonAlert} from "@ionic/angular/standalone";
 
 
 @Component({
@@ -14,12 +15,16 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonAlert
   ]
 })
 export class SettingsComponent  {
   private authService = inject(AuthService);
   private router = inject(Router);
+  alertHeader: string = "";
+  alertMessage: string = "";
+  alertButton = ['OK'];
   formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
   constructor(private alertController: AlertController) {}
@@ -48,22 +53,12 @@ export class SettingsComponent  {
     try {
       this.authService.changePassword(this.form.value.newPassword)
       this.form.reset();
+      this.alertHeader = 'Éxito';
+      this.alertMessage = 'Contraseña cambiada correctamente.';
 
-      const alert = await this.alertController.create({
-        mode: 'ios',
-        header: 'Éxito',
-        message: 'Contraseña cambiada correctamente.',
-        buttons: ['OK'],
-      });
-      await alert.present();
     } catch (error) {
-      const alert = await this.alertController.create({
-        mode: 'ios',
-        header: 'Error',
-        message: 'No se pudo cambiar la contraseña. Inténtalo más tarde.',
-        buttons: ['OK'],
-      });
-      await alert.present();
+      this.alertHeader = 'Error';
+      this.alertMessage = 'No se pudo cambiar la contraseña. Inténtalo más tarde.';
     }
   }
 

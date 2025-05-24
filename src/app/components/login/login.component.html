@@ -40,6 +40,12 @@
     </section>
     <section class="inputOptions-Field" id="logIn-Button-Field">
       <button type="submit" id="login-button">Iniciar sesion</button>
+      <ion-alert
+        trigger="login-button"
+        [header]="alertHeader"
+        [message]="alertMessage"
+        [buttons]= "alertButton"
+      ></ion-alert>
     </section>
     <section class="inputOptions-Field">
       <p class="forgot-Password-Text">¿Aún no tienes cuenta?</p>

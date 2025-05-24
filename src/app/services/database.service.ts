@@ -17,7 +17,7 @@ export class DatabaseService {
   private db: SQLiteDBConnection | null = null;
   private isWeb: boolean = false;
   private STORAGE_KEY!: string;
-  private readonly STORAGE_DB = 'favoritesDB';
+  private readonly STORAGE_DB = 'favouritesDB';
   private userID !:string;
 
 
@@ -56,7 +56,7 @@ export class DatabaseService {
             birthday TEXT,
             email TEXT,
             description TEXT,
-            photo TEXT
+            profilePhoto TEXT
           );
         `);
       } catch (error) {
@@ -86,7 +86,7 @@ export class DatabaseService {
       }
     } else if (this.db) {
       await this.db.run(
-        `INSERT OR REPLACE INTO ${this.userID} (id, name, birthday, email, description, photo) VALUES (?, ?, ?, ?, ?, ?)`,
+        `INSERT OR REPLACE INTO ${this.userID} (id, name, birthday, email, description, profilePhoto) VALUES (?, ?, ?, ?, ?, ?)`,
         [contact.id, contact.name, contact.birthday, contact.email,contact.description, contact.profilePhoto]
     );
     }

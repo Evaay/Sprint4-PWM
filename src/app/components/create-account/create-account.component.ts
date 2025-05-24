@@ -10,17 +10,22 @@ import {
   userNameExistsValidator
 } from "../../validators/createAccount.validator";
 import { AlertController } from '@ionic/angular';
+import {IonAlert} from "@ionic/angular/standalone";
 
 @Component({
     selector: 'app-create-account',
     templateUrl: './create-account.component.html',
     styleUrls: ['./create-account.component.scss'],
-    imports: [
-        ReactiveFormsModule
-    ]
+  imports: [
+    ReactiveFormsModule,
+    IonAlert
+  ]
 })
 export class CreateAccountComponent {
   //Inyectamos los servicios a emplear para poder sincronizar los datos
+  alertHeader: string = "";
+  alertMessage: string = "";
+  alertButton = ['OK'];
   private authService = inject(AuthService);
   private userService = inject(UserService);
   private router = inject(Router);
@@ -60,22 +65,12 @@ export class CreateAccountComponent {
     try {
       this.authService.signUp(this.user);
       this.form.reset();
-      const alert = await this.alertController.create({
-        mode: 'ios',
-        header: 'Éxito',
-        message: 'Usuario creado correctamente',
-        buttons: ['OK'],
-      });
-      await alert.present();
+      this.alertHeader = "Éxito"
+      this.alertMessage = 'Usuario creado correctamente';
       this.router.navigate(['login']);
     } catch (error) {
-      const alert = await this.alertController.create({
-        mode: 'ios',
-        header: 'Error',
-        message: 'No se ha podido crear el usuario',
-        buttons: ['OK'],
-      });
-      await alert.present();
+      this.alertHeader = 'Error'
+      this.alertMessage = 'No se ha podido crear el usuario';
     }
   }
 

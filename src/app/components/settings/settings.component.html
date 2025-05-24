@@ -70,6 +70,12 @@
 
       <section class="inputOptions-Field" id="password-Field">
         <button type="submit" id="setting-button">Cambiar Contraseña</button>
+        <ion-alert
+          trigger="setting-button"
+          [header]="alertHeader"
+          [message]="alertMessage"
+          [buttons]= "alertButton"
+        ></ion-alert>
       </section>
     </form>
 

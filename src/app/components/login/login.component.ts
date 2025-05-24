@@ -5,6 +5,7 @@ import {FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators} from
 import { AlertController } from '@ionic/angular';
 
 import {User} from '../../models/user.interface';
+import {IonAlert, NavController} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,19 @@ import {User} from '../../models/user.interface';
   styleUrls: ['./login.component.scss'],
   imports: [
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    IonAlert,
   ]
 })
 export class LoginComponent implements OnInit { // Implementa OnInit
   private authService = inject(AuthService);
-  private router = inject(Router);
-  constructor(private alertController: AlertController) {}
+  alertHeader: string = "";
+  alertMessage: string = "";
+  alertButton = ['OK'];
+  constructor(
+    private alertController: AlertController,
+    private navCtrl: NavController
+  ) {}
 
   formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
 
@@ -36,6 +43,7 @@ export class LoginComponent implements OnInit { // Implementa OnInit
   }
 
   async onSubmit() {
+    console.log('Button clicked');
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -45,22 +53,15 @@ export class LoginComponent implements OnInit { // Implementa OnInit
     try {
       await this.authService.signIn(this.user);
       this.form.reset();
-      const alert = await this.alertController.create({
-        header: 'Éxito',
-        message: 'Hola nuevamente',
-        buttons: ['OK'],
-      });
-      await alert.present();
-      this.router.navigate(['home']);
+      this.alertHeader = "Éxito"
+      this.alertMessage = "Hola de nuevo";
+      this.navCtrl.navigateForward('home');
     } catch(error) {
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'El usuario no existe o contraseña incorrecta',
-        buttons: ['OK'],
-      });
-      await alert.present();
+      this.alertHeader = 'Error';
+      this.alertMessage = 'El usuario no existe o contraseña incorrecta';
     }
   }
+
 
   get isFormTouchedAndInvalid() {
     return this.form.invalid && this.form.touched;

@@ -103,6 +103,12 @@
     </section>
     <section id="createAccount-Field">
       <button id="createAccountButton" type="submit">Crear cuenta</button>
+      <ion-alert
+        trigger="createAccountButton"
+        [header]="alertHeader"
+        [message]="alertMessage"
+        [buttons]= "alertButton"
+      ></ion-alert>
     </section>
   </form>
 </div>

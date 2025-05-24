@@ -21,7 +21,7 @@ import {DatabaseService} from "../../services/database.service";
   styleUrls: ['home.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonMenuButton, IonList, ContactBoxComponent, NgForOf, AsyncPipe, CommonModule],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit{
 
   favourites: { [id: string]: boolean } = {};
   private favoriteUrl:string ='' ;
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
     private userService: UserService,
     private navCtrl: NavController,
     private databaseService: DatabaseService
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.loadContactsAndFavourites()
@@ -58,14 +58,5 @@ export class HomePage implements OnInit {
     return this.favourites[contact.id] ?? false;
   }
 
-  toggleFavorite(contact:Contact) {
-    if (this.isFavourite(contact)) {
-      this.databaseService.removeFavorite(contact.id);
-      this.favourites[contact.id] = false;
 
-    }else {
-      this.databaseService.addFavorite(contact);
-      this.favourites[contact.id] = true;
-    }
-  }
 }
