@@ -5,7 +5,13 @@ import {FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators} from
 import { AlertController } from '@ionic/angular';
 
 import {User} from '../../models/user.interface';
-import {IonAlert, NavController} from "@ionic/angular/standalone";
+import {
+  IonAlert,
+  IonButton,
+  IonInput,
+  IonInputPasswordToggle,
+  NavController
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-login',
@@ -15,6 +21,9 @@ import {IonAlert, NavController} from "@ionic/angular/standalone";
     ReactiveFormsModule,
     RouterLink,
     IonAlert,
+    IonInput,
+    IonInputPasswordToggle,
+    IonButton,
   ]
 })
 export class LoginComponent implements OnInit { // Implementa OnInit

@@ -2,10 +2,12 @@
   <div class="setting-container" [class.expanded]="isFormTouchedAndInvalid">
     <h2 class="password-Text">Modificar Contraseña</h2>
     <form [formGroup]="form" (ngSubmit)="changePassword()" id="passwordForm">
+      <div class="border">
       <section>
-        <label for="currentPassword">Contraseña Actual:</label>
-        <input type="password" id="currentPassword" placeholder="Ingresa tu contraseña actual"
-               formControlName="currentPassword">
+        <ion-item>
+          <ion-input label="Contraseña Actual" labelPlacement="stacked" type="password" id="currentPassword" placeholder="Ingresa tu contraseña actual"
+                     formControlName="currentPassword"></ion-input>
+        </ion-item>
         @if (form.get('currentPassword')?.touched && form.get('currentPassword')?.hasError('required')) {
           <span class="error-message">Es obligatorio introducir una contraseña</span>
         }
@@ -24,9 +26,10 @@
       </section>
 
       <section>
-        <label for="newPassword">Nueva Contraseña:</label>
-        <input type="password" id="newPassword" placeholder="Ingresa la nueva contraseña"
-               formControlName="newPassword">
+        <ion-item>
+          <ion-input label="Nueva Contraseña" labelPlacement="stacked" type="password" id="newPassword" placeholder="Ingresa la nueva contraseña"
+                     formControlName="newPassword"></ion-input>
+        </ion-item>
         @if (form.get('newPassword')?.touched && form.get('newPassword')?.hasError('required')) {
           <span class="error-message">Es obligatorio introducir una contraseña</span>
         }
@@ -45,9 +48,11 @@
       </section>
 
       <section>
-        <label for="confirmPassword">Confirmar nueva contraseña:</label>
-        <input type="password" id="confirmPassword" placeholder="Confirma la nueva contraseña"
-               formControlName="confirmPassword">
+        <ion-item>
+          <ion-input label="Confirma Contraseña" labelPlacement="stacked" type="password" id="confirmPassword" placeholder="Confirma la nueva contraseña"
+                     formControlName="confirmPassword"></ion-input>
+        </ion-item>
+
         @if (form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('required')) {
           <span class="error-message">Es obligatorio introducir una contraseña</span>
         }
@@ -67,7 +72,7 @@
           <span class="error-message">Las contraseñas no coinciden</span>
         }
       </section>
-
+      </div>
       <section class="inputOptions-Field" id="password-Field">
         <button type="submit" id="setting-button">Cambiar Contraseña</button>
         <ion-alert

@@ -10,7 +10,7 @@ import {
   userNameExistsValidator
 } from "../../validators/createAccount.validator";
 import { AlertController } from '@ionic/angular';
-import {IonAlert, NavController} from "@ionic/angular/standalone";
+import {IonAlert, IonButton, IonInput, IonItem, NavController} from "@ionic/angular/standalone";
 
 @Component({
     selector: 'app-create-account',
@@ -18,7 +18,10 @@ import {IonAlert, NavController} from "@ionic/angular/standalone";
     styleUrls: ['./create-account.component.scss'],
   imports: [
     ReactiveFormsModule,
-    IonAlert
+    IonAlert,
+    IonItem,
+    IonInput,
+    IonButton
   ]
 })
 export class CreateAccountComponent {

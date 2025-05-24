@@ -55,17 +55,7 @@ section {
   margin-block: 0.4em;
 }
 
-input {
-  width: 94%;
-  padding: 0.5em 0 0.5em 1em;
-  border-radius: 0.5em;
-  border: #A8A8A8 solid 2px;
-  font-size: 0.8em;
 
-  &.ng-dirty.ng-invalid.ng-touched {
-    border-color: red;
-  }
-}
 
 .inputOptions-Field {
   width: 96%;
@@ -73,22 +63,7 @@ input {
   justify-content: center;
 }
 
-#logIn-Button-Field {
-  height: 2.5em;
-  margin-bottom: 0;
-}
 
-#login-button {
-  width: 100%;
-  border-radius: 5em;
-  border: #1d407d solid 2px;
-  background: #1d407d;
-  cursor: pointer;
-  color: whitesmoke;
-  font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 0.9em;
-}
 
 .forgot-Password-Text {
   background: none;
@@ -247,3 +222,10 @@ label, p {
 }
 
 
+.border {
+  border: 1px solid #ccc; /* Gris claro y suave */
+  border-radius: 6px;      /* Bordes ligeramente redondeados */
+  padding: 10px;           /* Un poco de espacio interno para que no quede muy pegado */
+  background-color: #fff;  /* Fondo blanco para contraste limpio */
+  box-sizing: border-box;  /* Para que el padding no aumente el tamaño total */
+}

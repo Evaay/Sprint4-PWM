@@ -7,7 +7,7 @@ import {
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import {IonAlert, NavController} from "@ionic/angular/standalone";
+import {IonAlert, IonInput, IonItem, NavController} from "@ionic/angular/standalone";
 
 
 @Component({
@@ -16,7 +16,9 @@ import {IonAlert, NavController} from "@ionic/angular/standalone";
   styleUrls: ['./settings.component.scss'],
   imports: [
     ReactiveFormsModule,
-    IonAlert
+    IonAlert,
+    IonItem,
+    IonInput
   ]
 })
 export class SettingsComponent  {
