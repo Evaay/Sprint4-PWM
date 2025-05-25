@@ -70,7 +70,6 @@ export class DatabaseService {
       const favorites = await this.getFavorites();
       const exists = favorites.some(fav => fav.id === contact.id);
       if (!exists) {
-
         const favoriteContact = {
           id: contact.id,
           name: contact.name,
@@ -79,9 +78,7 @@ export class DatabaseService {
           description: contact.description,
           profilePhoto: contact.profilePhoto
         };
-
         favorites.push(favoriteContact);
-
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(favorites));
       }
     } else if (this.db) {

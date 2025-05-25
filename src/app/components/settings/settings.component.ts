@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
-import {FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
   passwordMatchValidator,
   passwordMatchFirebaseValidator
 } from '../../validators/settingWindow.validator'
 import {AuthService} from '../../services/auth.service';
-import {Router} from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import {IonAlert, IonInput, IonItem, NavController} from "@ionic/angular/standalone";
+import {IonAlert, IonButton, IonInput, IonItem, NavController} from "@ionic/angular/standalone";
 
 
 @Component({
@@ -18,7 +16,8 @@ import {IonAlert, IonInput, IonItem, NavController} from "@ionic/angular/standal
     ReactiveFormsModule,
     IonAlert,
     IonItem,
-    IonInput
+    IonInput,
+    IonButton
   ]
 })
 export class SettingsComponent  {
